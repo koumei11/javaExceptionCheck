@@ -63,7 +63,7 @@ public class Main {
             System.out.println(country);
         }
 
-        // WorkplaceCommunication型でインスタンスを生成
+        // WorkplaceCommunicationクラスのインスタンスを生成
         WorkplaceCommunication wc = new WorkplaceCommunication();
         // Helloという言葉を受けたらHelloと返す
         System.out.println(wc.greet("Hello"));
@@ -72,16 +72,56 @@ public class Main {
             System.out.println("Hello");
         }
 
-        // Communication型でインスタンスを生成
-        Communication comm = new WorkplaceCommunication();
-        System.out.println(comm.greet("Hello"));
+        // WorkplaceCommunicationクラスをCommunication型でインスタンス生成
+        Communication communication = new WorkplaceCommunication();
+        // Helloという言葉を受けたらHelloと返す
+        System.out.println(communication.greet("Hello"));
+        // ここが職場なら挨拶をする
+        if(communication.sayWhere("Office")){
+            System.out.println("Hello");
+        }
 
-        // Communicateクラスを生成
+        // Communicateクラスのインスタンスを生成
         Communicate com = new Communicate();
         try {
+            // ボスじゃなければ例外を発生させる
             System.out.println(com.isBoss("OTHERS"));
         } catch (YourNotMyBossException e){
             System.out.println(e);
         }
+
+        // Supermanクラスのインスタンスを生成
+        Superman superman1 = new Superman("スーパーマン１", 200);
+        superman1.run();
+        superman1.fallAsleep();
+        System.out.println(superman1.mp);
+
+        // SupermanクラスをCharacter型でインスタンス生成
+        Character superman2 = new Superman("スーパーマン２", 250);
+        superman2.run();
+        superman2.fallAsleep();
+        System.out.println(superman2.mp);
+
+        // NormalPersonクラスのインスタンスを生成
+        NormalPerson np1 = new NormalPerson("普通の人１", 50);
+        np1.run();
+        np1.fallAsleep();
+        System.out.println(np1.mp);
+
+        // NormalPersonクラスをCharacter型でインスタンス生成
+        Character np2 = new NormalPerson("普通の人２", 30);
+        np2.run();
+        np2.fallAsleep();
+        System.out.println(np2.mp);
+
+        // リストに詰める
+        List<Character> characterList = new ArrayList<>();
+        characterList.add(superman1);
+        characterList.add(superman2);
+        characterList.add(np1);
+        characterList.add(np2);
+
+        characterList.stream()
+                .forEach(character -> System.out.println(character.name));
     }
 }
