@@ -123,5 +123,8 @@ public class Main {
 
         characterList.stream()
                 .forEach(character -> System.out.println(character.name));
+
+        MatcherClass mc = new MatcherClass();
+        System.out.println(mc.vowelOnly("sekaisaikyo"));
     }
 }
